@@ -1,0 +1,7 @@
+.title {
+    @apply font-extralight;
+}
+
+.title strong {
+    @apply font-bold;
+}
