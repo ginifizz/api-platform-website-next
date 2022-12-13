@@ -81,7 +81,7 @@ const Nav: React.ComponentType<NavProps> = ({
   const [getRef] = useDynamicRefs();
 
   const goToAnchorLink = useCallback(
-    (section:string) => {
+    (section: string) => {
       const element = getRef(`section-${section}`);
       element?.current?.scrollIntoView({ behavior: "smooth" });
     },
@@ -89,7 +89,6 @@ const Nav: React.ComponentType<NavProps> = ({
   );
 
   const [minified, setMinified] = useState(hasScroll && !logoAlwaysVisible);
-
 
   const onScroll = useCallback(() => {
     setMinified(50 > window.scrollY && !logoAlwaysVisible);
@@ -111,7 +110,7 @@ const Nav: React.ComponentType<NavProps> = ({
   return (
     <nav
       className={classNames(
-        "hidden fixed h-16 z-20 w-full items-center justify-end text-white p-3 | md:flex",
+        "fixed h-16 z-20 w-full items-center justify-end text-white p-3 | md:flex",
         !minified
           ? "bg-conf-gradient bg-[length:100%_100vh] bg-blue-black border-y-blue border-y shadow-md"
           : ""
@@ -129,11 +128,11 @@ const Nav: React.ComponentType<NavProps> = ({
         <Image
           src="/images/con/logo.svg"
           alt="Api Platform conference"
-          width="180"
-          height="40"
+          width="150"
+          height="35"
         />
         {edition ? (
-          <div className="text-blue top-1/2 right-0 text-sm py-0.5 px-1 border-t-blue border-t -translate-y-1/2 -rotate-90">
+          <div className="text-blue top-1/2 text-sm py-0.5 px-1 border-t-blue border-t -rotate-90">
             {edition}
           </div>
         ) : null}
@@ -141,7 +140,7 @@ const Nav: React.ComponentType<NavProps> = ({
       <a
         href={nav?.logoLink || "/"}
         className={classNames(
-          "w-20 h-16 absolute top-0 cursor-pointer bg-blue-gradient bg-blue flex items-center justify-center left-3",
+          "w-20 h-[62px] absolute top-0 cursor-pointer bg-blue-gradient bg-blue flex items-center justify-center",
           !minified ? "clip-path-flag left-0 pr-3" : "rounded-b-md left-3"
         )}
       >
@@ -166,16 +165,18 @@ const Nav: React.ComponentType<NavProps> = ({
           <div className="bg-white w-0.5 h-4/5 mx-4" />
         </>
       ) : null}
-      {links?.map((link) => (
-        <NavLink
-          key={link.text}
-          to={link.to}
-          withAnchors={isHomePage}
-          goToAnchorLink={goToAnchorLink}
-        >
-          {link.text}
-        </NavLink>
-      ))}
+      <div className="hidden | sm:block">
+        {links?.map((link) => (
+          <NavLink
+            key={link.text}
+            to={link.to}
+            withAnchors={isHomePage}
+            goToAnchorLink={goToAnchorLink}
+          >
+            {link.text}
+          </NavLink>
+        ))}
+      </div>
       {button}
     </nav>
   );

@@ -1,18 +1,21 @@
-import React, { PropsWithChildren, useContext } from 'react';
-import { Grid, GridItem } from '@components/common/Grid';
-import Section from '@con/components/common/Section';
-import { ConfContext } from '@con/components/layout';
-import useSpeakers from '@con/hooks/useSpeakers';
-import { Speaker } from 'src/con/types';
-import SectionTitle from '@con/components/common/SectionTitle';
-import SpeakerCircle from './SpeakerCircle';
-import EmptySpeakerCircle from './EmptySpeakerCircle';
+import React, { PropsWithChildren, useContext } from "react";
+import { Grid, GridItem } from "@components/common/Grid";
+import Section from "@con/components/common/Section";
+import { ConfContext } from "@con/components/layout";
+import useSpeakers from "@con/hooks/useSpeakers";
+import { Speaker } from "src/con/types";
+import SectionTitle from "@con/components/common/SectionTitle";
+import SpeakerCircle from "./SpeakerItem";
+import EmptySpeakerCircle from "./EmptySpeakerCircle";
 
 interface SpeakersProps extends PropsWithChildren {
   numberVisibles?: number;
 }
 
-const Speakers: React.ComponentType<SpeakersProps> = ({ children, numberVisibles = 6 }) => {
+const Speakers: React.ComponentType<SpeakersProps> = ({
+  children,
+  numberVisibles = 6,
+}) => {
   const speakers: Speaker[] = useSpeakers();
   const sortedSpeakers = speakers.sort((a, b) => {
     if (a.number > b.number) return 1;
@@ -24,7 +27,10 @@ const Speakers: React.ComponentType<SpeakersProps> = ({ children, numberVisibles
   const { edition } = useContext(ConfContext);
 
   return (
-    <Section className="conf__speakers overflow-hidden relative" section="speakers">
+    <Section
+      className="conf__speakers overflow-hidden relative"
+      section="speakers"
+    >
       <div className="container">
         <SectionTitle>
           Our <strong>speakers</strong>

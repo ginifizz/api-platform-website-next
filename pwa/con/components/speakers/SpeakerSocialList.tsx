@@ -1,22 +1,32 @@
-import React from 'react';
-import { Speaker } from '@con/types';
+import React from "react";
+import { Speaker } from "con/types";
 
 interface SpeakerSocialListProps {
   speaker: Speaker;
 }
 
-const SpeakerSocialList: React.ComponentType<SpeakerSocialListProps> = ({ speaker }) => {
+const SpeakerSocialList = ({ speaker }: SpeakerSocialListProps) => {
   const { github, twitter } = speaker;
   return (
-    <div className="social__list">
+    <div className="flex flex-row justify-center space-x-2.5">
       {github && (
-        <a href={github} target="_blank" rel="noopener noreferrer">
+        <a
+          className="btn empty relative flex flex-col justify-center items-center p-2 overflow-hidden m-1 text-xl rounded-full"
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <span className="icon-github" />
         </a>
       )}
       {twitter && (
-        <a href={twitter} target="_blank" rel="noopener noreferrer">
-          <span className="icon-twitter" />
+        <a
+          className="btn empty relative flex flex-col justify-center items-center p-2 overflow-hidden m-1 text-xl rounded-full"
+          href={twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="icon-twitter " />
         </a>
       )}
     </div>

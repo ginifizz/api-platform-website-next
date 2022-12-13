@@ -1,8 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
-import { useIntersection } from 'react-use';
-import gsap from 'gsap';
+import { useRef, useEffect, useState } from "react";
+import { useIntersection } from "react-use";
+import gsap from "gsap";
 
-export type DirectionType = 'bottom' | 'left' | 'right' | 'top' | 'scale';
+export type DirectionType = "bottom" | "left" | "right" | "top" | "scale";
 
 const fadeIn = (element: gsap.TweenTarget, duration: number, delay: number) => {
   gsap.to(element, duration, {
@@ -10,29 +10,34 @@ const fadeIn = (element: gsap.TweenTarget, duration: number, delay: number) => {
     x: 0,
     y: 0,
     scale: 1,
-    ease: 'power4.out',
+    ease: "power4.out",
     delay,
   });
 };
 
-const fadeOut = (element: gsap.TweenTarget, direction: DirectionType, duration: number, animationValue: number) => {
+const fadeOut = (
+  element: gsap.TweenTarget,
+  direction: DirectionType,
+  duration: number,
+  animationValue?: number
+) => {
   let x = 0;
   let y = 0;
   let scale = 1;
   switch (direction) {
-    case 'bottom':
+    case "bottom":
       y = animationValue || +100;
       break;
-    case 'left':
+    case "left":
       x = animationValue || +100;
       break;
-    case 'right':
+    case "right":
       x = animationValue || -100;
       break;
-    case 'scale':
+    case "scale":
       scale = animationValue || 0.8;
       break;
-    case 'top':
+    case "top":
       y = animationValue || +100;
       break;
     default:
@@ -44,7 +49,7 @@ const fadeOut = (element: gsap.TweenTarget, direction: DirectionType, duration: 
     x,
     y,
     scale,
-    ease: 'power4.out',
+    ease: "power4.out",
   });
 };
 
@@ -55,11 +60,11 @@ const useAnimation: (
   delay?: number,
   rootMargin?: string
 ) => React.RefObject<HTMLDivElement> = (
-  direction = 'right',
+  direction = "right",
   duration = 1,
   animationValue,
   delay = 0,
-  rootMargin = '-10%'
+  rootMargin = "-10%"
 ) => {
   const ref = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -77,7 +82,7 @@ const useAnimation: (
   if (
     intersection &&
     ref.current &&
-    ('bottom' !== direction || 0 < intersection.boundingClientRect.y) // avoid intersection box issue
+    ("bottom" !== direction || 0 < intersection.boundingClientRect.y) // avoid intersection box issue
   ) {
     if (intersection.isIntersecting) fadeIn(ref.current, duration, delay);
     else fadeOut(ref.current, direction, duration, animationValue);

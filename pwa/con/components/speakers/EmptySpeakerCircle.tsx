@@ -1,12 +1,12 @@
-import React from 'react';
-import Image from 'next/image';
-import SpeakerImage from './SpeakerImage';
+import React from "react";
+import Image from "next/image";
+import SpeakerImage from "./SpeakerImage";
 
 interface EmptySpeakerCircleProps {
   index: 1 | 2 | 3;
 }
 
-const EmptySpeakerCircle: React.ComponentType<EmptySpeakerCircleProps> = ({ index }) => {
+const EmptySpeakerCircle = ({ index }: EmptySpeakerCircleProps) => {
   return (
     <div className="font-raleway text-base leading-snug">
       <div className="text-center flex items-center justify-center flex-col group">
