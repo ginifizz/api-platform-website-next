@@ -1,12 +1,13 @@
 import React from "react";
 import Head from "next/head";
+import { GetStaticProps } from "next";
 import Layout from "con/components/2022/Layout";
-import { TITLE } from "con/data/meta";
 import SpeakerList from "con/components/speakers/SpeakerList";
 import SectionTitle from "con/components/common/SectionTitle";
-import { getAllSpeakers } from "con/utils";
-import { Speaker } from "con/types";
 import ContactCard from "con/components/common/ContactCard";
+import { getAllSpeakers } from "con/utils";
+import { TITLE } from "con/data/meta";
+import { Speaker } from "con/types";
 
 interface Speakers {
   speakers: Speaker[];
@@ -47,13 +48,13 @@ const Speakers = ({ speakers }: Speakers) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const speakers = await getAllSpeakers("2022");
   return {
     props: {
       speakers,
     },
   };
-}
+};
 
 export default Speakers;

@@ -72,3 +72,26 @@ export const getAllSpeakers = async (edition: string) => {
     })
   );
 };
+
+export const getAllSpeakerSlugs = async (edition: string) => {
+  const slugs = await fs.readdirSync(`./con/data/${edition}/speakers`);
+  return slugs.map((slug) => {
+    return {
+      params: {
+        slug: slug.replace(/\.md$/, ""),
+      },
+    };
+  });
+};
+
+export const getSpeakerData = async (edition: string, slug) => {
+  const fullPath = path.join(`./con/data/${edition}/speakers/`, `${slug}.md`);
+  const fileContents = await fs.readFileSync(fullPath, "utf8");
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents);
+  // Combine the data with the slug
+  return {
+    slug,
+    ...matterResult.data,
+  };
+};

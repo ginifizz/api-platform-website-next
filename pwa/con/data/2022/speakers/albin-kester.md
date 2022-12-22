@@ -16,5 +16,3 @@ Living in Nantes, Albin is a fullstack developer since 2007. Cooperator at Les-T
 He's on assignment at **France Télévisions** since 1 year.
 
 If you don't see him in front of his computer, he's probably training for **a future marathon**.
-
-
