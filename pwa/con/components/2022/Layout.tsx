@@ -53,15 +53,15 @@ const Layout: React.ComponentType<LayoutProps> = ({
   };
 
   // anchors handler
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
   const [sectionsVisibles, setSectionsVisibles] = useState<string[]>([]);
   const activeLink = useMemo(() => {
     const lastSectionVisible = sectionsVisibles?.[sectionsVisibles.length - 1];
-    if (!lastSectionVisible || "home" === lastSectionVisible) return pathname;
+    if (!lastSectionVisible || "home" === lastSectionVisible) return asPath;
     return sectionsVisibles.length
-      ? `${pathname}#${sectionsVisibles[sectionsVisibles.length - 1]}`
-      : pathname;
-  }, [sectionsVisibles, pathname]);
+      ? `${asPath}#${sectionsVisibles[sectionsVisibles.length - 1]}`
+      : asPath;
+  }, [sectionsVisibles, asPath]);
 
   // useEffect(() => {
   //   window.history.replaceState({}, "", activeLink);
