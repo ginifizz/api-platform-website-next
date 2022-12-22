@@ -8,6 +8,7 @@ import ContactCard from "con/components/common/ContactCard";
 import { getAllSpeakers } from "con/utils";
 import { TITLE } from "con/data/meta";
 import { Speaker } from "con/types";
+import { GetStaticProps } from "next";
 
 interface Speakers {
   speakers: Speaker[];
