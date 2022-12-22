@@ -2,21 +2,10 @@ import React from "react";
 import Head from "next/head";
 import Layout from "con/components/2022/Layout";
 import { TITLE } from "con/data/meta";
-import SpeakerList from "con/components/speakers/SpeakerList";
 import SectionTitle from "con/components/common/SectionTitle";
 import { getAllSpeakerSlugs, getSpeakerData } from "con/utils";
-import { useRouter } from "next/router";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import glob from "tiny-glob";
-import matter from "gray-matter";
 
-const Speaker = ({ paths, speakerData }) => {
-  if (!paths) {
-    <div className="container flex flex-col items-center pt-10 sm:pt-20">
-      <p>Loading</p>
-    </div>;
-  }
+const Speaker = ({ speakerData }) => {
   return (
     <Layout logoAlwaysVisible>
       <Head>
@@ -48,16 +37,18 @@ const Speaker = ({ paths, speakerData }) => {
   );
 };
 
-export const getStaticProps = async ({ params }) => {
-  const speakerData = await getSpeakerData("2022", params.slug);
-  console.log("speakerData", speakerData);
-  return { props: { speakerData } };
+
+export const getStaticProps = async ({ params: { slug }}) => {
+  const speakerData = await getSpeakerData("2022", slug);
+  return { props: { speakerData, slug } };
 };
 
 export const getStaticPaths = async () => {
   const paths = await getAllSpeakerSlugs("2022");
-  console.log("paths", paths);
-  return { paths, fallback: false };
+  return {
+    paths,
+    fallback: false, // false or 'blocking'
+  };
 };
 
 export default Speaker;
