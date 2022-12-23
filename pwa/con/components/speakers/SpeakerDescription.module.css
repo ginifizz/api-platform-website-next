@@ -1,0 +1,10 @@
+.content h2 {
+    @apply text-3xl font-black uppercase text-center lg:text-start;
+}
+.content p {
+    @apply text-lg mb-4 font-light text-justify lg:text-left;
+}
+
+.content h2:after {
+    @apply block content-[''] w-16 h-1 bg-blue mt-2 mb-6 rounded mx-auto lg:mx-0;
+}

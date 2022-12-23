@@ -7,6 +7,7 @@ interface SectionTitleProps extends PropsWithChildren {
   lined?: boolean;
   h1?: boolean;
   small?: boolean;
+  titleFatWeight?: boolean;
 }
 
 const SectionTitle = ({
@@ -15,6 +16,7 @@ const SectionTitle = ({
   lined = false,
   h1 = false,
   small = false,
+  titleFatWeight = false,
 }: SectionTitleProps) => (
   <div
     className={classnames(
@@ -42,7 +44,13 @@ const SectionTitle = ({
         {children}
       </h2>
     )}
-    <div className={classnames("relative text-5xl | sm:text-6xl", { lined })}>
+    <div
+      className={classnames(
+        "relative text-5xl | sm:text-6xl",
+        titleFatWeight && "font-black",
+        { lined }
+      )}
+    >
       {children}
     </div>
   </div>
