@@ -15,7 +15,7 @@ interface SpeakerProps {
 }
 
 const SpeakerItem = ({ speaker, hoverable = true }: SpeakerProps) => {
-  const { id, name, job, company, slug, github, twitter } = speaker;
+  const { id, name, job, company, github, twitter } = speaker;
   const social = github || twitter;
 
   const speakerData = {
@@ -85,10 +85,3 @@ const SpeakerItem = ({ speaker, hoverable = true }: SpeakerProps) => {
 };
 
 export default SpeakerItem;
-function useStaticQuery(arg0: any) {
-  throw new Error("Function not implemented.");
-}
-
-function getImage(images: any) {
-  throw new Error("Function not implemented.");
-}
