@@ -6,6 +6,8 @@ import remarkHtml from "remark-html";
 import glob from "tiny-glob";
 import { Conference } from "./types";
 
+const fs = require("fs");
+
 export const sortByStartDate: (
   conference1: Conference,
   conference2: Conference
@@ -49,24 +51,13 @@ export const getConferenceDate: (
     ? `${toLocaleDate(date)} · ${getConferenceTimes(date, start, end)}`
     : toLocaleDate(date);
 
-const fs = require("fs");
-
 export const getAllSpeakers = async (edition: string) => {
   const paths = await glob(path.join(`./con/data/${edition}/speakers`, "*.md"));
   return Promise.all(
     paths.map(async (path) => {
       const fileContents = await fs.readFileSync(path, "utf8");
       const matterResult = matter(fileContents);
-
-      // Use remark to convert markdown into HTML string
-      /*const processedContent = await remark()
-        .use(remarkHtml)
-        .process(matterResult.content);
-      const contentHtml = processedContent.toString();*/
-
-      // Combine the data with the id and contentHtml
       return {
-        // contentHtml,
         ...matterResult.data,
       };
     })
@@ -87,19 +78,29 @@ export const getAllSpeakerSlugs = async (edition: string) => {
 export const getSpeakerData = async (edition: string, slug: string) => {
   const fullPath = path.join(`./con/data/${edition}/speakers/`, `${slug}.md`);
   const fileContents = await fs.readFileSync(fullPath, "utf8");
-  // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
-  // Combine the data with the slug
-  // Use remark to convert markdown into HTML string
   const processedContent = await remark()
     .use(remarkHtml)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
-
-  // Combine the data with the id and contentHtml
   return {
     slug,
     contentHtml,
     ...matterResult.data,
   };
+};
+
+export const getAllConferences = async (edition: string) => {
+  const paths = await glob(
+    path.join(`./con/data/${edition}/conferences`, "*.md")
+  );
+  return Promise.all(
+    paths.map(async (path) => {
+      const fileContents = await fs.readFileSync(path, "utf8");
+      const matterResult = matter(fileContents);
+      return {
+        ...matterResult.data,
+      };
+    })
+  );
 };
