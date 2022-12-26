@@ -18,7 +18,7 @@ const SectionTitle = ({
 }: SectionTitleProps) => (
   <div
     className={classnames(
-      "relative text-center pt-20 pb-7",
+      "relative text-center pt-20 pb-7 w-screen overflow-hidden",
       styles.title,
       dark ? "text-white" : "text-blue-black"
     )}
@@ -35,7 +35,7 @@ const SectionTitle = ({
     ) : (
       <h2
         className={classnames(
-          "text-6xl absolute select-none z-0 w-[200%] left-1/2 bottom-16 -translate-x-1/2 scale-[2]",
+          "absolute select-none z-0 w-[200%] left-1/2 bottom-16 -translate-x-1/2 scale-[2] text-6xl",
           dark ? "text-pink/20" : "text-blue/10"
         )}
       >

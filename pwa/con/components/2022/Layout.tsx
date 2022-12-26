@@ -1,13 +1,12 @@
 import React, { useState, useMemo, useEffect, PropsWithChildren } from "react";
-import Head from "next/head";
 import Script from "next/script";
 import LayoutBase from "con/components/layout/LayoutBase";
-import meta from "con/data/2023/meta";
 import { useRouter } from "next/router";
 import ConfContext from "con/contexts/ConfContext";
 import SectionsContext from "con/contexts/SectionsContext";
-import nav from "con/data/2023/nav";
-import footer from "con/data/2023/footer";
+import meta from "con/data/2022/meta";
+import nav from "con/data/2022/nav";
+import footer from "con/data/2022/footer";
 
 interface LayoutProps extends PropsWithChildren {
   logoAlwaysVisible?: boolean;
@@ -64,9 +63,9 @@ const Layout: React.ComponentType<LayoutProps> = ({
       : pathname;
   }, [sectionsVisibles, pathname]);
 
-  useEffect(() => {
-    window.history.replaceState({}, "", activeLink);
-  }, [activeLink]);
+  // useEffect(() => {
+  //   window.history.replaceState({}, "", activeLink);
+  // }, [activeLink]);
 
   const [isEventBriteLoaded, setIsEventBriteLoaded] = useState(false);
 

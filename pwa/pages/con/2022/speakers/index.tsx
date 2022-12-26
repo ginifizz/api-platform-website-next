@@ -6,6 +6,7 @@ import SpeakerList from "con/components/speakers/SpeakerList";
 import SectionTitle from "con/components/common/SectionTitle";
 import { getAllSpeakers } from "con/utils";
 import { Speaker } from "con/types";
+import ContactCard from "con/components/common/ContactCard";
 
 interface Speakers {
   speakers: Speaker[];
@@ -25,12 +26,12 @@ const Speakers = ({ speakers }: Speakers) => {
           content={`${TITLE}: meet the best API experts!`}
         />
       </Head>
-      <div className="container flex flex-col items-center pt-10 sm:pt-20">
+      <div className="container flex flex-col items-center pt-10 | sm:pt-20">
         <div className="text-white">
           <SectionTitle h1 dark>
             Meet our <strong>speakers</strong>
           </SectionTitle>
-          <p className="text-2xl pt-2 pb-8">
+          <p className="text-2xl text-center pt-2 pb-8">
             Join international speakers sharing their knowledge on English and
             French-speaking tracks.
           </p>
@@ -38,6 +39,9 @@ const Speakers = ({ speakers }: Speakers) => {
         <div>
           <SpeakerList speakers={speakers} />
         </div>
+      </div>
+      <div>
+        <ContactCard />
       </div>
     </Layout>
   );
