@@ -26,7 +26,7 @@ const SectionTitle = ({
     {h1 ? (
       <h1
         className={classnames(
-          "absolute select-none z-0 left-1/2 bottom-16 -translate-x-1/2 scale-[2] text-3xl w-1/2 | sm:text-6xl | md:w-1/2 | lg:w-full",
+          "absolute select-none z-0 w-[200%] left-1/2 bottom-16 -translate-x-1/2 scale-[2] text-6xl",
           dark ? "text-pink/20" : "text-blue/10"
         )}
       >
@@ -35,7 +35,7 @@ const SectionTitle = ({
     ) : (
       <h2
         className={classnames(
-          "absolute text-6xl select-none z-0 left-1/2 bottom-16 -translate-x-1/2 scale-[2]",
+          "text-6xl absolute select-none z-0 w-[200%] left-1/2 bottom-16 -translate-x-1/2 scale-[2]",
           dark ? "text-pink/20" : "text-blue/10"
         )}
       >
