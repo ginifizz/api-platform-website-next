@@ -27,6 +27,7 @@ export type Speaker = {
   number?: number;
   description: string;
   slug: string;
+  contentHtml: string;
 };
 
 export type Conference = {
@@ -34,17 +35,17 @@ export type Conference = {
   start: string;
   end: string;
   date: string;
-  track: 'FR' | 'EN';
+  track: "FR" | "EN";
   description?: string;
   short?: string;
   slug?: string;
   speakers?: string[];
   edition: string;
-  type?: 'extra' | 'upcoming' | 'break';
+  type?: "extra" | "upcoming" | "break";
 };
 
 export type Track = {
-  id: 'FR' | 'EN';
+  id: "FR" | "EN";
   type: string;
   date: string;
 };
