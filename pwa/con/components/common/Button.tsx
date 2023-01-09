@@ -12,7 +12,7 @@ export interface ButtonProps
   external?: boolean;
 }
 
-const Button: React.ComponentType<ButtonProps> = ({
+const Button = ({
   children,
   className,
   empty,
@@ -21,7 +21,7 @@ const Button: React.ComponentType<ButtonProps> = ({
   size = "large",
   external = false,
   ...props
-}) => {
+}: ButtonProps) => {
   const classNames = classnames(
     "btn cursor-pointer",
     { small: "small" === size, empty, disabled },

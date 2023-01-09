@@ -9,16 +9,16 @@ interface SectionTitleProps extends PropsWithChildren {
   small?: boolean;
 }
 
-const SectionTitle: React.ComponentType<SectionTitleProps> = ({
+const SectionTitle = ({
   children,
   dark = false,
   lined = false,
   h1 = false,
   small = false,
-}) => (
+}: SectionTitleProps) => (
   <div
     className={classnames(
-      "text-center  pt-20 pb-7 relative",
+      "relative text-center pt-20 pb-7 w-screen overflow-hidden",
       styles.title,
       dark ? "text-white" : "text-blue-black"
     )}
@@ -33,11 +33,18 @@ const SectionTitle: React.ComponentType<SectionTitleProps> = ({
         {children}
       </h1>
     ) : (
-      <h2 className={classnames("text-6xl absolute select-none z-0 w-[200%] left-1/2 bottom-16 -translate-x-1/2 scale-[2]", dark ? "text-pink/20" : "text-blue/10")}>
+      <h2
+        className={classnames(
+          "absolute select-none z-0 w-[200%] left-1/2 bottom-16 -translate-x-1/2 scale-[2] text-6xl",
+          dark ? "text-pink/20" : "text-blue/10"
+        )}
+      >
         {children}
       </h2>
     )}
-    <div className={classnames("relative text-6xl", { lined })}>{children}</div>
+    <div className={classnames("relative text-5xl | sm:text-6xl", { lined })}>
+      {children}
+    </div>
   </div>
 );
 

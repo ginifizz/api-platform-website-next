@@ -12,6 +12,7 @@ module.exports = {
       padding: "2rem",
     },
     colors: {
+      transparent: "transparent",
       blue: {
         DEFAULT: "#2FC1C1",
         black: "#001226",
@@ -50,8 +51,16 @@ module.exports = {
         "btn-white": "linear-gradient(30deg,#fff 50%,transparent 0)",
         "btn-blue-empty": "linear-gradient(30deg,transparent 50%,#2FC1C1 0)",
         "icon-white": "linear-gradient(-120deg,#fff 50%,transparent 0)",
-        "circle": `url("/images/con/circle.svg")`
+        "icon-blue": "linear-gradient(-120deg,#2FC1C1 50%,transparent 0)",
+        circle: `url("/images/con/circle.svg")`,
+        "bg-circle": "url('/images/con/circle.svg')",
       }),
+    },
+    backgroundSize: {
+      auto: "auto",
+      cover: "cover",
+      contain: "contain",
+      300: "300%",
     },
   },
   plugins: [require("./plugins/stroke-dasharray-plugin.js")],
